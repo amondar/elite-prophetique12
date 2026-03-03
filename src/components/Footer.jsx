@@ -11,7 +11,7 @@ function Footer() {
       </div>
       
       <div className="contact-info">
-        <p>Contact : <a href="mailto:contact@elite-prophetique.com">contact@elite-prophetique.com</a></p>
+        <p>Contact : <a href="mailto:contact@elite-prophetique12.com">contact@elite-prophetique12.com</a></p>
       </div>
       
       <div className="copyright">
