@@ -1,42 +1,294 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* =========================================
+   VARIABLES : LES COULEURS DE VOTRE COUVERTURE
+   ========================================= */
+:root {
+  --primary-dark: #121E2B; /* Le bleu nuit du ciel */
+  --primary-light: #2A3B4C; /* Le bleu un peu plus clair des nuages */
+  --gold-main: #C69C4E; /* Le doré des lettres "LEVER UNE ARMÉE" */
+  --gold-light: #EAD089; /* Le doré clair pour l'éclat */
+  --red-crimson: #7A171B; /* Le rouge bordeaux de "JÉSUS-CHRIST" */
+  
+  --text-dark: #2D3748; /* Texte classique sur fond clair */
+  --text-light: #F7FAFC; /* Texte blanc/crème sur fond sombre */
+  --bg-cream: #FCFBF7; /* Un fond très légèrement chaud/sable */
+  --bg-white: #FFFFFF;
+}
+
+body {
+  margin: 0;
+  font-family: 'system-ui', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  color: var(--text-dark);
+  line-height: 1.6;
+  background-color: var(--bg-cream);
+}
+
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* =========================================
+   STYLES GLOBAUX
+   ========================================= */
+section, header {
+  padding: 4rem 2rem;
+}
+
+h1, h2, h3 {
+  color: var(--primary-dark);
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* Boutons avec effet Doré Métallique */
+button {
+  background: linear-gradient(135deg, var(--gold-main), var(--gold-light), var(--gold-main));
+  color: var(--primary-dark); /* Texte foncé sur fond or pour bien lire */
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 800;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  margin-top: 1rem;
+  box-shadow: 0 4px 15px rgba(198, 156, 78, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(198, 156, 78, 0.6);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold-main), var(--gold-light));
+}
+
+/* =========================================
+   SECTION 1 : EN-TÊTE (Imite la couverture)
+   ========================================= */
+.header-section {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  background: linear-gradient(to bottom, var(--primary-dark), var(--primary-light));
+  color: var(--text-light);
+  text-align: center;
+  gap: 2rem;
+  border-bottom: 4px solid var(--gold-main);
+}
+
+.header-content h1 {
+  color: var(--gold-light);
+  font-size: 2.5rem;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.header-content p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: #E2E8F0;
+}
+
+.header-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5), 0 0 20px rgba(198, 156, 78, 0.2);
+  border: 2px solid var(--gold-main);
+}
+
+/* =========================================
+   SECTION 2 : LE LIVRE (BookPromo)
+   ========================================= */
+.book-promo-section {
+  background-color: var(--bg-cream);
+}
+
+.urgency-text {
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.benefits-list {
+  background: var(--bg-white);
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(18, 30, 43, 0.05);
+  margin: 0 auto 2rem;
+  max-width: 800px;
+  border-top: 4px solid var(--red-crimson);
+}
+
+.benefits-list h3 {
+  color: var(--red-crimson);
+}
+
+.benefits-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.benefits-list li {
+  margin-bottom: 1.2rem;
+  font-size: 1.05rem;
+  border-left: 3px solid var(--gold-main);
+  padding-left: 1rem;
+}
+
+.cta-container {
+  text-align: center;
+}
+
+/* =========================================
+   SECTION 3 : L'AUTEUR (About)
+   ========================================= */
+.about-section {
+  background-color: var(--bg-white);
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.author-image img {
+  width: 280px;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 4px solid var(--gold-main);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.author-bio p {
+  margin-bottom: 1rem;
+}
+
+.community-cta {
+  background-color: var(--bg-cream);
+  padding: 2rem;
+  border-radius: 8px;
+  margin-top: 2rem;
+  border: 1px solid #E2E8F0;
+  text-align: center;
+}
+
+/* =========================================
+   SECTION 4 : COMMUNAUTÉ (Community)
+   ========================================= */
+.community-section {
+  background-color: var(--primary-light);
+  color: var(--text-light);
+  text-align: center;
+}
+
+.community-section h2 {
+  color: var(--gold-light);
+}
+
+.gift-box {
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--gold-main);
+  padding: 1.5rem;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 2rem auto;
+}
+
+.gift-box h3 {
+  color: var(--gold-light);
+  margin-bottom: 0.5rem;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.signup-form input {
+  padding: 1rem;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+}
+
+.signup-form input:focus {
+  outline: none;
+  border-color: var(--gold-main);
+}
+
+.privacy-note {
+  margin-top: 1rem;
+  color: #CBD5E1;
+}
+
+/* =========================================
+   SECTION 5 : PIED DE PAGE (Footer)
+   ========================================= */
+.footer-section {
+  background-color: var(--primary-dark);
+  color: var(--text-light);
+  text-align: center;
+  padding: 3rem 2rem;
+  font-size: 0.9rem;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+
+.footer-section a {
+  color: var(--gold-main);
+  text-decoration: none;
+  margin: 0 0.5rem;
+  font-weight: bold;
+}
+
+.footer-section a:hover {
+  color: var(--gold-light);
+}
+
+/* =========================================
+   ADAPTATION POUR LES ORDINATEURS (Desktop)
+   ========================================= */
+@media (min-width: 768px) {
+  .header-section {
+    flex-direction: row;
+    text-align: left;
+    justify-content: space-between;
+    padding: 6rem 4rem;
   }
-  to {
-    transform: rotate(360deg);
+  
+  .header-content {
+    flex: 1;
+    padding-right: 4rem;
   }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+  
+  .header-image {
+    flex: 0.8;
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  
+  .about-content {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+  
+  .author-image {
+    flex-shrink: 0;
+  }
 }
