@@ -19,7 +19,7 @@ function Header() {
       
       <div className="header-image">
         {/* Vous pourrez remplacer la source (src) par l'image de votre couverture */}
-        <img src="/public/couverture.jpg" alt="Couverture du livre Lever une armée de prophètes" />
+        <img src="/couverture.jpg" alt="Couverture du livre Lever une armée de prophètes" />
       </div>
     </header>
   );

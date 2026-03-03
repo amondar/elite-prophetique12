@@ -8,7 +8,7 @@ function About() {
       <div className="about-content">
         <div className="author-image">
            {/* N'oubliez pas de mettre le bon nom de votre fichier photo ici */}
-           <img src="/public/photo.png" alt="Prophète Amon Darius" />
+           <img src="/photo.png" alt="Prophète Amon Darius" />
         </div>
         
         <div className="author-bio">
