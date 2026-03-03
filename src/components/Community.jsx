@@ -3,13 +3,36 @@ import React, { useState } from 'react';
 function Community() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
+  const [status, setStatus] = useState(''); // Pour afficher le message de réussite/erreur
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Plus tard, vous pourrez connecter ceci à un service d'envoi d'e-mails
-    alert(`Merci ${name} ! Votre inscription est prise en compte avec l'adresse ${email}. Vous recevrez bientôt le lien vers la vidéo.`);
-    setName('');
-    setEmail('');
+    setStatus('⏳ Envoi en cours...');
+
+    try {
+      // 👇 REMPLACEZ LE LIEN CI-DESSOUS PAR VOTRE VRAI LIEN FORMSPREE 👇
+      const response = await fetch("https://formspree.io/f/mkovllre", {
+        method: "POST",
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ 
+          Prénom: name, 
+          Email: email 
+        })
+      });
+
+      if (response.ok) {
+        setStatus("✅ Merci ! Votre inscription est confirmée. Je vous envoie le lien de la vidéo très vite !");
+        setName('');
+        setEmail('');
+      } else {
+        setStatus("❌ Une erreur est survenue. Veuillez vérifier votre adresse e-mail.");
+      }
+    } catch (error) {
+      setStatus("❌ Erreur de connexion au serveur.");
+    }
   };
 
   return (
@@ -43,6 +66,10 @@ function Community() {
         />
         <button type="submit">👉 Oui, je m'inscris et j'accède à la vidéo !</button>
       </form>
+
+      {/* Affichage du message de succès ou d'erreur */}
+      {status && <p style={{ marginTop: '1rem', fontWeight: 'bold', color: '#EAD089' }}>{status}</p>}
+
       <p className="privacy-note">
         <small>🔒 Votre adresse e-mail est en sécurité. Vous pourrez vous désabonner à tout moment.</small>
       </p>
